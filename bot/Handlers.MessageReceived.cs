@@ -96,9 +96,9 @@ namespace bot
                             parseMode: ParseMode.Markdown,
                             text: "🇺🇿 Tilni tanlang\n🇬🇧 Choose language\n🇷🇺 Выберите язык",
                             replyMarkup: MessageBuilder.ChooseLanguage());
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     } 
                     case "🇬🇧 En":
@@ -121,9 +121,9 @@ namespace bot
                                     },
                             replyMarkup: MessageBuilder.LocationRequestButton(initUser.Language)
                             );
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     case "🇬🇧 English":
@@ -161,9 +161,9 @@ namespace bot
                                 },
                             replyMarkup: MessageBuilder.Menu(langUser.Language)
                             );
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     case "Don't share":
@@ -182,9 +182,9 @@ namespace bot
                                 _    => "Problem with language. Try again"
                             },
                             replyMarkup: MessageBuilder.LocationRequestButton(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     
@@ -204,9 +204,9 @@ namespace bot
                             parseMode: ParseMode.Markdown,
                             text: json.TimeToString(language),
                             replyMarkup: MessageBuilder.Menu(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     
@@ -225,9 +225,9 @@ namespace bot
                                 _    => "*Use only buttons*"
                             },
                             replyMarkup: MessageBuilder.Settings(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     case "Change Location":
@@ -245,9 +245,9 @@ namespace bot
                                 _    => "*En/Ru/Uz*"
                             },
                             replyMarkup: MessageBuilder.ResetLocationButton(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     
@@ -264,9 +264,9 @@ namespace bot
                                     language
                                     ),
                             replyMarkup: MessageBuilder.Menu(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     case "Back to menu":
@@ -284,9 +284,9 @@ namespace bot
                                 _    => "*Use only buttons*"
                             },
                             replyMarkup: MessageBuilder.Menu(language));
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     case "Tilni o'zgartirish":
@@ -304,9 +304,9 @@ namespace bot
                                 _    => "*Use only buttons*"
                             },
                             replyMarkup: MessageBuilder.ChoosenextLanguage());
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         break;
                     }
                     default:
@@ -321,9 +321,9 @@ namespace bot
                                 "🇺🇿 Uz" => "Noto'g'ri buyruq!\nIltimos, botni qaytadan yurgizing",
                                 _    => "*Error in default*"
                             });
-                        // await client.DeleteMessageAsync(
-                        //     chatId: message.Chat.Id,
-                        //     messageId: message.MessageId);
+                        await client.DeleteMessageAsync(
+                            chatId: message.Chat.Id,
+                            messageId: message.MessageId);
                         System.Console.WriteLine("Invalid command");break;
                     }
                 }
