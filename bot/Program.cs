@@ -34,9 +34,11 @@ namespace bot
 
         private static void Configure(HostBuilderContext context, IServiceCollection services)
         {
-            services.AddDbContext<BotDbContext>(
-                options =>
-                options.UseSqlite(Configuration.GetConnectionString("BotConnection")), ServiceLifetime.Singleton);
+            services.AddDbContext<BotDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
+                // options.UseSqlite(Configuration.GetConnectionString("BotConnection")), ServiceLifetime.Singleton);
+            // using Microsoft.EntityFrameworkCore;
+            
             services.AddMemoryCache();
             services.AddSingleton<TelegramBotClient>(b => new TelegramBotClient(Configuration.GetSection("Bot:Token").Value));
             
