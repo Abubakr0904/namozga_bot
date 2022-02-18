@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
+
 using bot.Services;
 using bot.HttpClients;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ namespace bot
 {
     class Program
     {
-        public static IConfigurationRoot Configuration { get; private set; }
+        // public static IConfigurationRoot Configuration { get; private set; }
 
         static Task Main(string[] args)
             => CreateHostBuilder(args)
@@ -26,21 +27,21 @@ namespace bot
 
         private static IHostBuilder CreateHostBuilder(string[] args)
             => Host.CreateDefaultBuilder(args)
-                .ConfigureServices(Configure)
-                .ConfigureAppConfiguration((context, configuration) =>
-                {
-                    configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                    Configuration = configuration.Build();
-                });
+                .ConfigureServices(Configure);
+                // .ConfigureAppConfiguration((context, configuration) =>
+                // {
+                //     configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                //     // Configuration = configuration.Build();
+                // });
 
         private static void Configure(HostBuilderContext context, IServiceCollection services)
         {
             services.AddDbContext<BotDbContext>(
                 options =>
-                // options.UseSqlite(Configuration.GetConnectionString("BotConnection")), ServiceLifetime.Singleton);
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
+                    options.UseNpgsql("User ID=tmihppdyrytscb;Password=a7fd6415ef24e0c7e7a13d57e6c065c8b4e0934d3371f2b773268303efac7ebd;Host=ec2-52-204-196-4.compute-1.amazonaws.com;Port=5432;Database=d67cinktj4b7oe;Pooling=true;Integrated Security=true;sslmode=Require;Trust Server Certificate=true;"), ServiceLifetime.Singleton);
+                // options.UseSqlite("Data Source=bot.db;"), ServiceLifetime.Singleton);
             services.AddMemoryCache();
-            services.AddSingleton<TelegramBotClient>(b => new TelegramBotClient(Configuration.GetSection("Bot:Token").Value));
+            services.AddSingleton<TelegramBotClient>(b => new TelegramBotClient("2010387651:AAEjEk7F0FaEp5GW2FbYr5qHzyUFvxwPyr4"));
             
             services.AddHostedService<Bot>();
             services.AddHostedService<NotificationBackgroundService>();
@@ -51,7 +52,7 @@ namespace bot
             services.AddHttpClient<IPrayerTimeService, AladhanClient>(
                 client => 
                 {
-                    client.BaseAddress = new Uri(Configuration.GetSection("Aladhan:BaseUrl").Value);
+                    client.BaseAddress = new Uri("http://api.aladhan.com/v1");
                 });
             services.AddTransient<ICacheService, PrayerTimeCacheService>(); 
             // services.AddTransient<BotUser>();

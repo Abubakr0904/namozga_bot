@@ -9,7 +9,7 @@ using bot.Entity;
 namespace bot.Migrations
 {
     [DbContext(typeof(BotDbContext))]
-    [Migration("20220218064426_Create")]
+    [Migration("20220218121539_Create")]
     partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
