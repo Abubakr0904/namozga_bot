@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 // using Microsoft.Extensions.Http;
 // using bot.Services;
 using bot.Entity;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.Extensions.Configuration;
 
 namespace bot
@@ -36,7 +37,8 @@ namespace bot
         {
             services.AddDbContext<BotDbContext>(
                 options =>
-                options.UseSqlite(Configuration.GetConnectionString("BotConnection")), ServiceLifetime.Singleton);
+                // options.UseSqlite(Configuration.GetConnectionString("BotConnection")), ServiceLifetime.Singleton);
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
             services.AddMemoryCache();
             services.AddSingleton<TelegramBotClient>(b => new TelegramBotClient(Configuration.GetSection("Bot:Token").Value));
             
