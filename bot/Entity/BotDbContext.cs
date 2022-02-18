@@ -9,6 +9,7 @@ namespace bot.Entity
             :base(options) {  }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            // options.UseNpgsql("Host=localhost;Database=postgresbot;Username=SA;Password=abubakr0902!");
             base.OnConfiguring(options);
         }
 
