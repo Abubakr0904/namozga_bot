@@ -21,7 +21,7 @@
     <PackageReference Include="npgsql.entityframeworkcore.postgresql" Version="5.0" />
     <PackageReference Include="Quartz" Version="3.3.3" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
-    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp" Version="2.88.6" />
     <PackageReference Include="Telegram.Bot.Extensions.Polling" Version="0.2.0" />
     <PackageReference Include="TimeZoneConverter" Version="3.5.0" />
     <PackageReference Include="Topten.RichTextKit" Version="0.4.148" />
